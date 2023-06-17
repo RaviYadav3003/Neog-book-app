@@ -5,27 +5,37 @@ import { Link } from 'react-router-dom'
 import { DataContext } from './DataContext'
 
 export const Search = () => {
+    const { handleDropedown, dispatch, state } = useContext(DataContext)
+    const handleSearchChange = (e) => {
+        dispatch({ type: "SERCH_PRODUCT", payload: e.target.value })
+    }
 
-    const { handleDropedown } = useContext(DataContext)
+    const renderData = () => {
+        let filteredData = [...books]
+        if (state.searchValue) {
+            filteredData = filteredData.filter((product) => product.title.toLowerCase().includes(state.searchValue.toLowerCase()))
+        }
+        return filteredData;
+    }
     return (
         <div className='container-main'>
 
             <div className='search-bar'>
                 <Link to="/"><button>home</button></Link>
-                <input type='search' />
+                <input type='search' onChange={handleSearchChange} />
             </div>
             <div className='container-book'>
-                {books?.map((item) => {
+                {renderData()?.map((item) => {
                     const { id, title, img, author } = item
                     return <div key={id} className='books-list'>
                         <img src={img} alt="books" />
                         <p>{title}</p>
                         <p>{author}</p>
-                        <select onClick={() => handleDropedown(item)}>
+                        <select onClick={handleDropedown}>
                             <option > move to..</option>
-                            <option >currently Reading</option>
-                            <option>Want to Read</option>
-                            <option>Read</option>
+                            <option value="curr">currently Reading</option>
+                            <option value="want">Want to Read</option>
+                            <option value="read">Read</option>
                         </select>
                     </div>
                 })}

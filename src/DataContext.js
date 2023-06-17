@@ -6,8 +6,8 @@ export const DataProvider = ({ children }) => {
     const [state, dispatch] = useReducer(dataReducer, initialState)
 
 
-    const handleDropedown = (item) => {
-        console.log(item);
+    const handleDropedown = (e) => {
+        console.log(e.target.value);
     }
     return (
         <div>
