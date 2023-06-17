@@ -1,0 +1,22 @@
+
+.container-book {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+
+.container-book img {
+    width: 176px;
+    height: 221px;
+}
+
+.books-list{
+    padding: 9px;
+    margin: 9px;
+    box-shadow: 2px 2px 2px 2px grey;
+}
+
+.books-list p {
+    margin: 0px;
+}
