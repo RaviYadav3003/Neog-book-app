@@ -31,11 +31,11 @@ export const Search = () => {
                         <img src={img} alt="books" />
                         <p>{title}</p>
                         <p>{author}</p>
-                        <select onClick={handleDropedown}>
+                        <select onClick={() => handleDropedown(item)}>
                             <option > move to..</option>
-                            <option value="curr">currently Reading</option>
-                            <option value="want">Want to Read</option>
-                            <option value="read">Read</option>
+                            <option value="currentlyReading">currently Reading</option>
+                            <option value="WantToRead">Want to Read</option>
+                            <option value="Read">Read</option>
                         </select>
                     </div>
                 })}
